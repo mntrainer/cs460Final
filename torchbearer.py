@@ -2,8 +2,8 @@
 CS 460 – Algorithms: Final Programming Assignment
 The Torchbearer
 
-Student Name: ___________________________
-Student ID:   ___________________________
+Student Name: __Tianna Nelson_________________________
+Student ID:   ___130894618________________________
 
 INSTRUCTIONS
 ------------
