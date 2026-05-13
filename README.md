@@ -1,7 +1,7 @@
 # The Torchbearer
 
-**Student Name:** ___________________________
-**Student ID:** ___________________________
+**Student Name:** ______Tianna Nelson_____________________
+**Student ID:** ______130894618_____________________
 **Course:** CS 460 – Algorithms | Spring 2026
 
 > This README is your project documentation. Write it the way a developer would document
@@ -17,13 +17,14 @@
 > per question. Each bullet should be 1-2 sentences max.
 
 - **Why a single shortest-path run from S is not enough:**
-  _Your answer here._
+  shortest path means the shortest path from point a to point b, but in this situation 
+  a set number of nodes must be visited so the shortest path run wouldn't work cause it might exclude the required nodes in the set.
 
 - **What decision remains after all inter-location costs are known:**
-  _Your answer here._
+  choosing which path from S to the required nodes in the set would be most optimal and the least amount of weight.
 
 - **Why this requires a search over orders (one sentence):**
-  _Your answer here._
+  Because the order of how the required nodes are visited may amount to a different weight depending on the paths that taken for example a node could have 2 possible paths to different nodes and depending on which node the path took previously the weights could be different, amounting to a different total cost.
 
 ---
 
