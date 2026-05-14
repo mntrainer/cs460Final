@@ -34,22 +34,25 @@
 
 > List the source node types as a bullet list. For each, one-line reason.
 
+Source nodes are nodes that start and connect to another node
+
 | Source Node Type | Why it is a source |
-|---|---|
-| _node type_ | _one-line reason_ |
-| _node type_ | _one-line reason_ |
+|---               |---                 |
+| Entrance Node S  | This is the source node to the rest of the path |
+| Relic Node       | These are source nodes to parts parts of the path |
+| Exit node        | Shortest path to the exit might be needed |
 
 ### Part 2b: Distance Storage
 
 > Fill in the table. No prose required.
 
-| Property | Your answer |
-|---|---|
-| Data structure name | |
-| What the keys represent | |
-| What the values represent | |
-| Lookup time complexity | |
-| Why O(1) lookup is possible | |
+| Property                    | Your answer |
+|---       |---               |
+| Data structure name         | Hash map    |
+| What the keys represent     | The keys should be the letters for the nodes |
+| What the values represent   | The current least weight known from the start to that node |
+| Lookup time complexity      | O(1)|
+| Why O(1) lookup is possible | because the letters for the nodes would be unique and known|
 
 ### Part 2c: Precomputation Complexity
 

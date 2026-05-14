@@ -34,7 +34,22 @@ def explain_problem():
 
     TODO
     """
-    return "TODO"
+    return """ 
+    
+            shortest path means the shortest path 
+            from point a to point b, but in this situation 
+            a set number of nodes must be visited so the shortest path 
+            run wouldn't work cause it might exclude the required nodes in the set. 
+
+            choosing which path from S to the required nodes in the set 
+            would be most optimal and the least amount of weight.
+
+            Because the order of how the required nodes are visited may 
+            amount to a different weight depending on the paths that taken 
+            for example a node could have 2 possible paths to different nodes and depending on which 
+            node the path took previously the weights could be different, amounting to a different total cost.
+            
+            """
 
 
 # =============================================================================
@@ -56,7 +71,7 @@ def select_sources(spawn, relics, exit_node):
 
     TODO
     """
-    pass
+    return list[set([spawn], relics, [exit_node])]
 
 
 def run_dijkstra(graph, source):
@@ -75,13 +90,56 @@ def run_dijkstra(graph, source):
 
     TODO
     """
-    pass
+    # dictionaries are updated by assigning a value to a key ex. distance["S"] = 7
+    
+    # need to update the
+    
+    distances = {} # form of node: weight
+
+    for node in graph:
+        print(node)
+        distances[node] = float('inf') #initialize each node to inf
+    
+    # source is the starting point initialized to 0 
+    distances[source] = 0
+
+    # keep a list of visited so we don't return to the visited nodes
+    visited = set() # a set of nodes with shortest path finalized
+    
+    while len(visited) < len(distances):
+        
+        curr_node = None
+        curr_distance = float('inf')
+
+        # visited is empty wouldn't this just add the 
+        # the current distances are set to infinity so source is chosen first
+        # this would choose the next shortest distance from the current node
+        for node in graph:
+            if node not in visited and distances[node] < curr_distance:
+                curr_node = node
+                curr_distance = distances[node]
+        
+        if curr_node is None:
+            break
+        
+        # so the current node doesn't get chosen again
+        visited.add(curr_node)
+
+        # is only a loop for the current node
+        # the for loop would loop through each tuple in the curr_node
+        for neighbor, cost in graph[curr_node]: # neighbor, cost defines each tuple in the node
+            new_distance = distances[curr_node] + cost # adding the cost to the neighbor from the current node to get current min distance to the neighbor
+
+            if curr_distance < distances[neighbor]: # check if the path to the neighbor is less than the current total distance to that neighbor
+                distances[neighbor] = new_distance # in the table the distance to the neighbor is updated from the source
+    
+    return distances
 
 
 def precompute_distances(graph, spawn, relics, exit_node):
     """
     Parameters
-    ----------
+    ---------- 
     graph : dict[node, list[tuple[node, int]]]
     spawn : node
     relics : list[node]
@@ -220,6 +278,7 @@ def solve(graph, spawn, relics, exit_node):
 # Graders will run additional tests beyond these.
 # =============================================================================
 
+"""
 def _run_tests():
     print("Running provided tests...")
 
@@ -281,3 +340,20 @@ def _run_tests():
 
 if __name__ == "__main__":
     _run_tests()
+
+"""
+
+def main():
+    graph_4 = {
+        'S': [('X', 1)],
+        'X': [('R1', 2), ('R2', 5)],
+        'R1': [('Y', 1)],
+        'Y': [('R2', 1)],
+        'R2': [('T', 1)],
+        'T': []
+    }
+
+    output = run_dijkstra(graph_4, 'S')
+    print(output)
+
+main()

@@ -10,21 +10,27 @@
 
 ---
 
-## Entry 1 – [Date]: Initial Plan
+## Entry 1 – [5/13/26 3pm]: Initial Plan
 
 > Required. Write this before writing any code. Describe your plan: what you will
 > implement first, what parts you expect to be difficult, and how you plan to test.
 
-_Your entry here._
+My plan is to first figure out dikstra's algorithm for this 
+problem and work out solving all the questions I have for the problem and fully understanding it
+I will work out each part incrementally like for dikstra's I need to understand the input
+How to process the input, how to keep track of visited nodes, how to update the table etc
+I also feel like the precompute distances part would be difficult but once dijkstra's is implemented it should be easier
+I forgot to write this devlog entry oops
 
 ---
 
-## Entry 2 – [Date]: [Short description]
+## Entry 2 – [5/13/26 7pm]: [Short description]
 
 > Required. At least one entry must describe a bug, wrong assumption, or design change
 > you encountered. Describe what went wrong and how you resolved it.
 
-_Your entry here._
+I didn't realize there needed to be a visited set for dijkstra's and that the 
+current node needed to be updated so I only had 1 for loop for the actual processing part for a while and didn't understand why the distance set wasn't updating properly
 
 ---
 
@@ -49,8 +55,8 @@ _Your entry here._
 
 | Part | Estimated Hours |
 |---|---|
-| Part 1: Problem Analysis | |
-| Part 2: Precomputation Design | |
+| Part 1: Problem Analysis | 30 minutes |
+| Part 2: Precomputation Design | 3 hours |
 | Part 3: Algorithm Correctness | |
 | Part 4: Search Design | |
 | Part 5: State and Search Space | |
