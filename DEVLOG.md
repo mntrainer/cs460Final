@@ -30,13 +30,13 @@ I forgot to write this devlog entry oops
 > you encountered. Describe what went wrong and how you resolved it.
 
 I didn't realize there needed to be a visited set for dijkstra's and that the 
-current node needed to be updated so I only had 1 for loop for the actual processing part for a while and didn't understand why the distance set wasn't updating properly
+current node needed to be updated so I only had 1 for loop for the actual processing part for a while and didn't understand why the distance set wasn't updating properly. My dijkstra algorithm is not optimized with n^2 time so I will probably attempt to optimize it, I see heapq is imported which is probably what I need to use.
 
 ---
 
-## Entry 3 – [Date]: [Short description]
+## Entry 3 – [5/14/26 3pm]: [Short description]
 
-_Your entry here._
+Finished part 3 and optimized dijkstra's algorithm
 
 ---
 

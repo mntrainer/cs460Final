@@ -97,41 +97,31 @@ def run_dijkstra(graph, source):
     distances = {} # form of node: weight
 
     for node in graph:
-        print(node)
         distances[node] = float('inf') #initialize each node to inf
     
     # source is the starting point initialized to 0 
     distances[source] = 0
 
+    pq = [(0, source)]
+
     # keep a list of visited so we don't return to the visited nodes
     visited = set() # a set of nodes with shortest path finalized
     
-    while len(visited) < len(distances):
+    while pq:
         
-        curr_node = None
-        curr_distance = float('inf')
+        curr_distance, curr_node = heapq.heappop(pq)
 
-        # visited is empty wouldn't this just add the 
-        # the current distances are set to infinity so source is chosen first
-        # this would choose the next shortest distance from the current node
-        for node in graph:
-            if node not in visited and distances[node] < curr_distance:
-                curr_node = node
-                curr_distance = distances[node]
-        
-        if curr_node is None:
-            break
-        
-        # so the current node doesn't get chosen again
-        visited.add(curr_node)
+        if curr_distance > distances[curr_node]:
+            continue
 
         # is only a loop for the current node
         # the for loop would loop through each tuple in the curr_node
         for neighbor, cost in graph[curr_node]: # neighbor, cost defines each tuple in the node
             new_distance = distances[curr_node] + cost # adding the cost to the neighbor from the current node to get current min distance to the neighbor
 
-            if curr_distance < distances[neighbor]: # check if the path to the neighbor is less than the current total distance to that neighbor
+            if new_distance < distances[neighbor]: # check if the path to the neighbor is less than the current total distance to that neighbor
                 distances[neighbor] = new_distance # in the table the distance to the neighbor is updated from the source
+                heapq.heappush(pq, (new_distance, neighbor))
     
     return distances
 
@@ -159,12 +149,10 @@ def precompute_distances(graph, spawn, relics, exit_node):
     # No it's run from each of the sources to every other node and the shortest distance between the important nodes
     distances = {}
 
-    distances[spawn] = run_dijkstra(graph, spawn)
+    sources = select_sources(spawn, relics, exit_node)
 
-    for relic in relics:
-        distances[relic] = run_dijkstra(graph, relic)
-    
-    distances[exit_node] = run_dijkstra(graph, exit_node)
+    for source in sources:
+        distances[source] = run_dijkstra(graph, source)
 
     return distances
 
@@ -183,7 +171,24 @@ def dijkstra_invariant_check():
 
     TODO
     """
-    return "TODO"
+    return """
+            The stored distance is the shortest possible distance from the source
+
+            There are other paths can be taken that could also 
+            have a shorter distance than the current distance
+
+
+            The source will be 0 before initialization because it is the starting node,
+            all other paths will start at infinity because they haven't been explored yet
+
+            The algorithm will choose the node with the smallest known distance next, since 
+            the weights cannot be negative no other path chosen to that node will be more 
+            than the current min distance.
+
+            When the algorithm ends, every node that was able to be reached with the minimum 
+            cost has been reached which terminates the algorithm.
+            
+            """
 
 
 # =============================================================================

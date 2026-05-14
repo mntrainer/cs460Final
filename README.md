@@ -58,9 +58,12 @@ Source nodes are nodes that start and connect to another node
 
 > State the total complexity and show the arithmetic. Two to three lines max.
 
-- **Number of Dijkstra runs:** _your answer_
-- **Cost per run:** _your answer_
-- **Total complexity:** _your answer_
+- **Number of Dijkstra runs:** 
+  2 + R number of relics would be the run 2 for entry and exit and R for the amount of relics needed
+- **Cost per run:**
+  Currently my cost per run for dijkstra is n^2 + n
+- **Total complexity:** 
+  O((R + 2)(N^2 + N))
 - **Justification (one line):** _your answer_
 
 ---
@@ -76,29 +79,29 @@ Source nodes are nodes that start and connect to another node
 > Do not copy the invariant text from the spec.
 
 - **For nodes already finalized (in S):**
-  _Your answer here._
+  The stored distance is the shortest possible distance from the source
 
 - **For nodes not yet finalized (not in S):**
-  _Your answer here._
+  There are other paths can be taken that could also have a shorter distance than the current distance
 
 ### Part 3b: Why Each Phase Holds
 
 > One to two bullets per phase. Maintenance must mention nonnegative edge weights.
 
 - **Initialization : why the invariant holds before iteration 1:**
-  _Your answer here._
+  The source will be 0 before initialization because it is the starting node, all other paths will start at infinity because they haven't been explored yet
 
 - **Maintenance : why finalizing the min-dist node is always correct:**
-  _Your answer here._
+  The algorithm will choose the node with the smallest known distance next, since the weights cannot be negative no other path chosen to that node will be more than the current min distance.
 
 - **Termination : what the invariant guarantees when the algorithm ends:**
-  _Your answer here._
+  When the algorithm ends, every node that was able to be reached with the minimum cost has been reached which terminates the algorithm.
 
 ### Part 3c: Why This Matters for the Route Planner
 
 > One sentence connecting correct distances to correct routing decisions.
 
-_Your answer here._
+The shortest distances are needed so minimum costs to all required nodes are compared and the cheapest valid route can be determined.
 
 ---
 
