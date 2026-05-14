@@ -153,7 +153,20 @@ def precompute_distances(graph, spawn, relics, exit_node):
 
     TODO
     """
-    pass
+
+    # for each relic in this dikstra's problem, dijkstra's should run relic + 1 to include spawn?
+    # unless the optimal path include the relic set then its whats not included + 1
+    # No it's run from each of the sources to every other node and the shortest distance between the important nodes
+    distances = {}
+
+    distances[spawn] = run_dijkstra(graph, spawn)
+
+    for relic in relics:
+        distances[relic] = run_dijkstra(graph, relic)
+    
+    distances[exit_node] = run_dijkstra(graph, exit_node)
+
+    return distances
 
 
 # =============================================================================
@@ -355,5 +368,10 @@ def main():
 
     output = run_dijkstra(graph_4, 'S')
     print(output)
+
+    relics = ['X', 'R1', 'Y', 'R2']
+
+    output2 = precompute_distances(graph_4, 'S', relics, 'T')
+    print(output2)
 
 main()
