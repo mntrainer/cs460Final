@@ -71,7 +71,7 @@ def select_sources(spawn, relics, exit_node):
 
     TODO
     """
-    return list(set([spawn], relics, [exit_node]))
+    return list(set([spawn] + relics + [exit_node]))
 
 
 def run_dijkstra(graph, source):
@@ -296,9 +296,60 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     explaining why it is safe (cannot skip the optimal solution).
     This comment is graded.
     """
-    pass
 
-    #This is going to be the painful part
+    # start pruning at the top to stop a bad partial route
+    if cost_so_far >= best[0]:
+        return
+
+    # Base cases
+    # checks if there are no more relics left to collect
+    if not relics_remaining:
+        # This looks up the shortest distance from current location to exit
+        exit_cost = dist_table[current_loc][exit_node]
+
+        # checks if there is no path from the current to the exit
+        if exit_cost == float('inf'):
+            return
+        
+        #calculates the full route cost
+        total_cost = cost_so_far + exit_cost
+
+        #if this current cost
+        if total_cost < best[0]:
+            #best would then have the lowest fuel cost found
+            best[0] = total_cost
+            best[1] = relics_visited_order.copy()
+        
+        return
+    
+    # loop through each relic that needs to be collected
+    # need to use a list because the set inside the loop will be modified
+    for relic in list(relics_remaining):
+        # shortest distance from current location to the relic location
+        # the distance table will already have valid paths its just being parsed
+        travel_cost = dist_table[current_loc][relic]
+
+        # if there is no path it is skipped
+        if travel_cost == float('inf'):
+            continue
+
+        #The remove means the current relic is collected
+        relics_remaining.remove(relic)
+        # This will create the order of relics collected 
+        relics_visited_order.append(relic)
+
+        #Will recursively explore route after choosing
+        # current_loc gets set to the current relic
+        # current relic total travel cost is added
+        _explore(dist_table, relic, relics_remaining, relics_visited_order,
+                 cost_so_far + travel_cost, exit_node, best)
+        
+        #backtracking part
+        # undo so another path can be attempted
+        relics_visited_order.pop()
+        relics_remaining.add(relic)
+
+
 
 
 # =============================================================================
@@ -322,7 +373,9 @@ def solve(graph, spawn, relics, exit_node):
 
     TODO
     """
-    pass
+    dist_table = precompute_distances(graph, spawn, relics, exit_node)
+
+    return find_optimal_route(dist_table, spawn, relics, exit_node)
 
 
 # =============================================================================
@@ -330,7 +383,6 @@ def solve(graph, spawn, relics, exit_node):
 # Graders will run additional tests beyond these.
 # =============================================================================
 
-"""
 def _run_tests():
     print("Running provided tests...")
 
@@ -393,24 +445,4 @@ def _run_tests():
 if __name__ == "__main__":
     _run_tests()
 
-"""
 
-def main():
-    graph_4 = {
-        'S': [('X', 1)],
-        'X': [('R1', 2), ('R2', 5)],
-        'R1': [('Y', 1)],
-        'Y': [('R2', 1)],
-        'R2': [('T', 1)],
-        'T': []
-    }
-
-    output = run_dijkstra(graph_4, 'S')
-    print(output)
-
-    relics = ['X', 'R1', 'Y', 'R2']
-
-    output2 = precompute_distances(graph_4, 'S', relics, 'T')
-    print(output2)
-
-main()

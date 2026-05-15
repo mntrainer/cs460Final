@@ -138,10 +138,10 @@ The shortest distances are needed so minimum costs to all required nodes are com
 > Variable names here must match exactly what you use in torchbearer.py.
 
 | Component | Variable name in code | Data type | Description |
-|---|---|---|---|
-| Current location | | | |
-| Relics already collected | | | |
-| Fuel cost so far | | | |
+|---        |---                    |---        |---          |
+| Current location | current_loc    | node      | current route end location |
+| Relics already collected | relics_visited_order    | list[node] | The relics visited|
+| Fuel cost so far |   cost_so_far. | float     |   total fuel cost by the route |
 
 ### Part 5b: Data Structure for Visited Relics
 

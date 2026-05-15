@@ -43,13 +43,13 @@ For part 5 and 6 I did some research and I plan on implementing backtracking and
 
 ---
 
-## Entry 4 – [Date]: Post-Implementation Reflection
+## Entry 4 – [5/14/26 9 pm]: Post-Implementation Reflection
 
 > Required. Written after your implementation is complete. Describe what you would
 > change or improve given more time.
 
-_Your entry here._
 
+I was thinking about the possibility that 
 ---
 
 ## Final Entry – [Date]: Time Estimate
