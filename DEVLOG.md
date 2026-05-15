@@ -49,7 +49,7 @@ For part 5 and 6 I did some research and I plan on implementing backtracking and
 > change or improve given more time.
 
 
-I was thinking about the possibility that 
+My pruning is very short I don't really optimize it at all so I would probably implement something related to checking for current expensive branches and not possible expensive branches
 ---
 
 ## Final Entry – [Date]: Time Estimate
@@ -61,9 +61,9 @@ I was thinking about the possibility that
 | Part 1: Problem Analysis | 30 minutes |
 | Part 2: Precomputation Design | 3 hours |
 | Part 3: Algorithm Correctness | 1 hour|
-| Part 4: Search Design | |
-| Part 5: State and Search Space | |
-| Part 6: Pruning | |
-| Part 7: Implementation | |
-| README and DEVLOG writing | |
-| **Total** | |
+| Part 4: Search Design | 1 hour |
+| Part 5: State and Search Space | 3 hours (planning)|
+| Part 6: Pruning | 10 minutes|
+| Part 7: Implementation | 2 hours |
+| README and DEVLOG writing | 1 hour total|
+| **Total** | 11 hours 40 minutes |

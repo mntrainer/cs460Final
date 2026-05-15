@@ -149,18 +149,18 @@ The shortest distances are needed so minimum costs to all required nodes are com
 
 | Property | Your answer |
 |---|---|
-| Data structure chosen | |
-| Operation: check if relic already collected | Time complexity: |
-| Operation: mark a relic as collected | Time complexity: |
-| Operation: unmark a relic (backtrack) | Time complexity: |
-| Why this structure fits | |
+| Data structure chosen | a set |
+| Operation: check if relic already collected | Time complexity: O(1)|
+| Operation: mark a relic as collected | Time complexity: O(1)|
+| Operation: unmark a relic (backtrack) | Time complexity: 0(1)|
+| Why this structure fits | removes in costant time and readds in constant time so its optimal|
 
 ### Part 5c: Worst-Case Search Space
 
 > Two bullets.
 
-- **Worst-case number of orders considered:** _Your answer (in terms of k)._
-- **Why:** _One-line justification._
+- **Worst-case number of orders considered:** _Your answer (in terms of k). O(k!)
+- **Why:** every possible permutation must be considered resulting in k!
 
 ---
 
@@ -170,23 +170,23 @@ The shortest distances are needed so minimum costs to all required nodes are com
 
 > Three bullets.
 
-- **What is tracked:** _Your answer here._
-- **When it is used:** _Your answer here._
-- **What it allows the algorithm to skip:** _Your answer here._
+- **What is tracked:** the best full route
+- **When it is used:** an if statment at the start of explore
+- **What it allows the algorithm to skip:** any paths with cost_so_far >= best[0]
 
 ### Part 6b: Lower Bound Estimation
 
 > Three bullets.
 
-- **What information is available at the current state:** _Your answer here._
-- **What the lower bound accounts for:** _Your answer here._
-- **Why it never overestimates:** _Your answer here._
+- **What information is available at the current state:** current location, relics left, exit and dist table
+- **What the lower bound accounts for:** I do not have any lower bounds
+- **Why it never overestimates:** it's always less than or equal to the final cost
 
 ### Part 6c: Pruning Correctness
 
 > One to two bullets. Explain why pruning is safe.
 
-- _Your answer here._
+- adding more travel costs will not make the route cheaper than the current best route so discarding it is okay
 
 ---
 
@@ -194,4 +194,8 @@ The shortest distances are needed so minimum costs to all required nodes are com
 
 > Bullet list. If none beyond lecture notes, write that.
 
-- _Your references here._
+- https://www.youtube.com/watch?v=XEb7_z5dG3c&t=46s
+- https://www.youtube.com/watch?v=_lHSawdgXpI
+- https://www.geeksforgeeks.org/dsa/backtracking-algorithms/
+- https://www.hello-algo.com/en/chapter_backtracking/permutations_problem/
+- https://docs.python.org/3/tutorial/datastructures.html 
