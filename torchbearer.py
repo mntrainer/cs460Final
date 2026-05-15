@@ -71,7 +71,7 @@ def select_sources(spawn, relics, exit_node):
 
     TODO
     """
-    return list[set([spawn], relics, [exit_node])]
+    return list(set([spawn], relics, [exit_node]))
 
 
 def run_dijkstra(graph, source):
@@ -205,7 +205,23 @@ def explain_search():
 
     TODO
     """
-    return "TODO"
+    return """
+            The greedy will the local optimum 
+            but the total route would not result in the global optimum. 
+
+            S : (['E', 1], ['G', 2])
+            E: (['G', 100], ['T', 2])
+            G: (['E', 1], ['T', 1])
+            T: ([])
+
+            Greedy will pick S->E then E->G then G->T (102)
+
+            S->G then G->E then E->T which results in (5)
+
+            greedy will lose here since choosing the local 
+            optimal route created a more expensive route in the future
+
+            """
 
 
 # =============================================================================
@@ -232,6 +248,22 @@ def find_optimal_route(dist_table, spawn, relics, exit_node):
 
     TODO
     """
+
+    # Set up starting values
+    # call the explore function for recursion
+    # returns the optimal route
+    # distance table is assumed to be a parameter and called
+    
+    # stores complete answer found so far
+    best_route = [float('inf'), []]
+
+    relics_left = set(relics) # need a set to remove and add relics for backtracking
+
+    _explore(dist_table, spawn, relics_left, [], 0, exit_node, best_route)
+
+    return best_route[0], best_route[1]
+
+
     pass
 
 
@@ -265,6 +297,8 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     This comment is graded.
     """
     pass
+
+    #This is going to be the painful part
 
 
 # =============================================================================

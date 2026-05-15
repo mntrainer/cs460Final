@@ -34,9 +34,12 @@ current node needed to be updated so I only had 1 for loop for the actual proces
 
 ---
 
-## Entry 3 – [5/14/26 3pm]: [Short description]
+## Entry 3 – [5/14/26 3pm - 7pm]: [Short description]
 
 Finished part 3 and optimized dijkstra's algorithm
+Finished doing part 4 of the final
+
+For part 5 and 6 I did some research and I plan on implementing backtracking and pruning along with dijkstra to make this work. I would probably create the skeleton first with the optimal function and then implement the recursion that is needed for backtracking, Then I would implement pruning last.
 
 ---
 
@@ -57,7 +60,7 @@ _Your entry here._
 |---|---|
 | Part 1: Problem Analysis | 30 minutes |
 | Part 2: Precomputation Design | 3 hours |
-| Part 3: Algorithm Correctness | |
+| Part 3: Algorithm Correctness | 1 hour|
 | Part 4: Search Design | |
 | Part 5: State and Search Space | |
 | Part 6: Pruning | |

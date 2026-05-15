@@ -112,17 +112,21 @@ The shortest distances are needed so minimum costs to all required nodes are com
 > State the failure mode. Then give a concrete counter-example using specific node names
 > or costs (you may use the illustration example from the spec). Three to five bullets.
 
-- **The failure mode:** _Your answer here._
-- **Counter-example setup:** _Your answer here._
-- **What greedy picks:** _Your answer here._
-- **What optimal picks:** _Your answer here._
-- **Why greedy loses:** _Your answer here._
+- **The failure mode:** The greedy will the local optimum but the total route would not result in the global optimum. 
+- **Counter-example setup:** 
+  S : (['E', 1], ['G', 2])
+  E: (['G', 100], ['T', 2])
+  G: (['E', 1], ['T', 1])
+  T: ([])
+- **What greedy picks:** Greedy will pick S->E then E->G then G->T (102)
+- **What optimal picks:** S->G then G->E then E->T which results in (5)
+- **Why greedy loses:** greedy will lose here since choosing the local optimal route created a more expensive route in the future
 
 ### What the Algorithm Must Explore
 
 > One bullet. Must use the word "order."
 
-- _Your answer here._
+- The algorithm must consider the relic choice order since choosing the closest cheapest relic is not always the best option.
 
 ---
 
